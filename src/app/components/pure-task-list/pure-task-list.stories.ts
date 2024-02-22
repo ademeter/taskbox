@@ -1,37 +1,35 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-
 import { argsToTemplate, componentWrapperDecorator, moduleMetadata } from '@storybook/angular';
-
 import { CommonModule } from '@angular/common';
-
-import TaskListComponent from './task-list.component';
+import PureTaskListComponent from './pure-task-list.component';
 import TaskComponent from '../task/task.component';
-
 import * as TaskStories from '../task/task.stories';
 
-const meta: Meta<TaskListComponent> = {
-    component: TaskListComponent,
-    title: 'TaskList',
+const meta: Meta<PureTaskListComponent> = {
+    component: PureTaskListComponent,
+    title: 'PureTaskList',
     tags: ['autodocs'],
     decorators: [
         moduleMetadata({
-            imports: [CommonModule, TaskListComponent, TaskComponent],
+            //👇 Imports both components to allow component composition with Storybook
+            imports: [CommonModule, PureTaskListComponent, TaskComponent],
         }),
+        //👇 Wraps our stories with a decorator
         componentWrapperDecorator(
-            (story) => `<div style="margin: 3em">${story}</div>`
+            (story) => `<div style="margin: 3em">${story}</div>`,
         ),
     ],
-    render: (args: TaskListComponent) => ({
+    render: (args: PureTaskListComponent) => ({
         props: {
             ...args,
             onPinTask: TaskStories.actionsData.onPinTask,
             onArchiveTask: TaskStories.actionsData.onArchiveTask,
         },
-        template: `<app-task-list ${argsToTemplate(args)}></app-task-list>`,
+        template: `<app-pure-task-list ${argsToTemplate(args)}></app-pure-task-list>`,
     }),
 };
 export default meta;
-type Story = StoryObj<TaskListComponent>;
+type Story = StoryObj<PureTaskListComponent>;
 
 export const Default: Story = {
     args: {

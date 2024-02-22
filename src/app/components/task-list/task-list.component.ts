@@ -1,46 +1,35 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-
-import { Task } from '../../models/task.model';
-import TaskComponent from '../task/task.component';
-import { NgForOf, NgIf } from '@angular/common';
+import { Component } from '@angular/core';
+import { Store } from '@ngxs/store';
+import { ArchiveTask, PinTask } from '../../state/task.state';
+import { Observable } from 'rxjs';
+import PureTaskListComponent from '../pure-task-list/pure-task-list.component';
 
 @Component({
     selector: 'app-task-list',
-    standalone: true,
     templateUrl: './task-list.component.html',
+    standalone: true,
     imports: [
-        NgIf,
-        NgForOf,
-        TaskComponent,
+        PureTaskListComponent,
     ],
 })
 export default class TaskListComponent {
+    tasks$?: Observable<any>;
+
+    constructor(private store: Store) {
+        this.tasks$ = store.select((state) => state.taskbox.tasks);
+    }
 
     /**
-     * @ignore
-     * Component property to define ordering of tasks
+     * Component method to trigger the archiveTask event
      */
-    tasksInOrder: Task[] = [];
+    archiveTask(id: string) {
+        this.store.dispatch(new ArchiveTask(id));
+    }
 
-    @Input() loading = false;
-
-    // tslint:disable-next-line: no-output-on-prefix
-    @Output() onPinTask: EventEmitter<string> = new EventEmitter();
-
-    // tslint:disable-next-line: no-output-on-prefix
-    @Output() onArchiveTask: EventEmitter<string> = new EventEmitter();
-
-    @Input()
-    set tasks(arr: Task[]) {
-        const initialTasks = [
-            ...arr.filter(t => t.state === 'TASK_PINNED'),
-            ...arr.filter(t => t.state !== 'TASK_PINNED'),
-        ];
-        const filteredTasks = initialTasks.filter(
-            t => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED'
-        );
-        this.tasksInOrder = filteredTasks.filter(
-            t => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED'
-        );
+    /**
+     * Component method to trigger the pinTask event
+     */
+    pinTask(id: string) {
+        this.store.dispatch(new PinTask(id));
     }
 }
