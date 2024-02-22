@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Task } from '../models/task.model';
+import { Task } from '../../models/task.model';
 import { NgIf } from '@angular/common';
 
 @Component({
