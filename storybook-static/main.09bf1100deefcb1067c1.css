@@ -10,11 +10,11 @@ body {
   padding: 0;
   font-size: 100%;
   outline: none;
-  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: 400;
   color: #333;
   font-size: 16px;
-  background-color: #26c6da;
+  background-color: #4d507c;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
@@ -118,8 +118,8 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 textarea {
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 18px;
+  line-height: 24px;
   font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: 400;
   padding: 0.75rem 0;
@@ -150,11 +150,11 @@ textarea {
   right: auto;
   bottom: auto;
   left: 50%;
-  width: 0.85em;
-  height: 0.85em;
+  width: 0.7em;
+  height: 0.7em;
   transform: translate3d(-50%, -50%, 0);
   background: transparent;
-  box-shadow: #2cc5d2 0 0 0 1px inset;
+  box-shadow: #3B439C 0 0 0 1px inset;
   content: "";
   display: block;
 }
@@ -272,8 +272,8 @@ textarea {
 }
 
 .list-item {
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 22px;
+  line-height: 26px;
   display: flex;
   flex-wrap: wrap;
   height: 3rem;
@@ -306,13 +306,13 @@ textarea {
   text-align: center;
   transition: all 200ms ease-in;
   color: #eee;
-  font-size: 16px;
+  font-size: 22px;
   line-height: 3rem;
   outline: none;
 }
 
 .pin-button:hover {
-  color: #2cc5d2;
+  color: #3B439C;
 }
 .pin-button:focus {
   outline-color: transparent;
@@ -332,7 +332,7 @@ textarea {
 }
 
 .list-item:hover {
-  background-image: linear-gradient(to bottom, #e5f9f7 0%, #f0fffd 100%);
+  background: #f0fffd;
 }
 
 .list-item:hover .checkbox {
@@ -421,7 +421,7 @@ textarea {
 }
 
 .wrapper-message .subtitle-message {
-  font-size: 14px;
+  font-size: 20px;
   line-height: 20px;
   color: #4a5568;
 }
