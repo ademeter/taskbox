@@ -3,6 +3,7 @@ import { Store } from '@ngxs/store';
 import { ArchiveTask, PinTask } from '../../state/task.state';
 import { Observable } from 'rxjs';
 import PureTaskListComponent from '../pure-task-list/pure-task-list.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-task-list',
@@ -10,6 +11,7 @@ import PureTaskListComponent from '../pure-task-list/pure-task-list.component';
     standalone: true,
     imports: [
         PureTaskListComponent,
+        AsyncPipe,
     ],
 })
 export default class TaskListComponent {
